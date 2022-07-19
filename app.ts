@@ -1,24 +1,61 @@
-let button = document.getElementById("button");
-let input1 = document.getElementById("input1") as HTMLInputElement;
-let input2 = document.getElementById("input2") as HTMLInputElement;
+const pessoa = {
+  nome: 'Jurema',
+  idade: 18,
+  profissao: 'Piloto'
+}
 
-function adicionarNumero(numero1: number, numero2: number, devePrintar: boolean, frase: string) {
-  let resultado = numero1 + numero2
+//objeto
+const joao: {nome: string, idade: number, profissao: string} = {
+  nome: 'João',
+  idade: 45,
+  profissao: 'Jogador'
+}
 
-  if (devePrintar) {
-    console.log(frase + resultado)
+//propriedade enum - basicamente um grupo de constantes
+enum Profissao {
+  Professora, 
+  Atriz, 
+  Piloto,
+  Jogador
+}
+
+interface Pessoa {
+  nome: string,
+  idade: number,
+  profissao?: Profissao
+}
+
+interface Estudante extends Pessoa {
+  materias: string[]           //lista do tipo string
+}
+
+
+const carla: Pessoa = {
+  nome: 'Carla', 
+  idade: 32,
+  profissao: Profissao.Atriz
+}
+
+const jessica: Estudante = {
+  nome: 'Jessica', 
+  idade: 27,
+  profissao: Profissao.Professora,
+  materias: ['Matemática', 'Fisolofia', 'História']
+}
+
+
+const pedro: Estudante = {
+  nome: 'Pedro', 
+  idade: 27,
+  materias: ['Matemática', 'Fisolofia', 'História']
+}
+
+function listar(lista: string[]) {
+  for(const item of lista) {
+    console.log('- ', item)
   }
-
-  return numero1 + numero2;
 }
 
-let devePrintar = true;
-let frase = "O valor é: ";
+listar(jessica.materias);
 
-if (button) {
-  button.addEventListener('click', () => {
-    if (input1 && input2) {
-      console.log(adicionarNumero(Number(input1.value), Number(input2.value), devePrintar, frase));
-    }
-  });
-}
+
