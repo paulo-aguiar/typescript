@@ -1,3 +1,4 @@
+// objeto por inferência
 const pessoa = {
   nome: 'Jurema',
   idade: 18,
